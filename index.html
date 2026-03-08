@@ -21,12 +21,14 @@
             padding: 0;
         }
 
-        /* ヘッダー：お洒落なグラデーション */
+        /* ヘッダー：背景に干渉しないよう不透明に設定 */
         header {
             background: linear-gradient(135deg, #f5f1e6 0%, #e8e0cc 100%);
             padding: 20px;
             text-align: center;
             border-bottom: 3px double var(--primary-color);
+            position: relative;
+            z-index: 10;
         }
 
         .store-name {
@@ -42,19 +44,29 @@
             color: var(--accent-color);
         }
 
-        /* コンテンツエリア */
+        /* --- コンテンツエリア：背景画像の設定 --- */
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
+            /* 背景画像の設定（ファイル名は適宜変更してください） */
+            background-image: url("bwv1030.jpg"); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* スクロールしても背景が動かない設定 */
+            min-height: 100vh;
         }
 
+        /* --- セクション：30%透過（不透明度0.7） --- */
         section {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.7); /* 白を70%の濃さで */
+            padding: 30px;
+            margin-bottom: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            /* すりガラスのような効果を足して読みやすくします */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         h2 {
@@ -64,10 +76,12 @@
             margin-top: 0;
         }
 
+        /* --- ハイライトボックス：50%透過（不透明度0.5） --- */
         .highlight-box {
-            background-color: #fff9e6;
+            background-color: rgba(255, 249, 230, 0.5); /* 薄黄色を50%の濃さで */
             border: 1px dashed #d4af37;
-            padding: 0 20px;
+            padding: 10px 20px;
+            margin: 20px 0;
         }
 
         .tel-link {
@@ -89,13 +103,16 @@
         /* フッター */
         footer {
             text-align: center;
+            padding: 20px;
             font-size: 0.9rem;
             color: #777;
+            background: rgba(255, 255, 255, 0.5);
         }
 
         /* スマホ対応 */
         @media (max-width: 600px) {
             .store-name { font-size: 2rem; }
+            .container { padding: 20px 10px; }
         }
     </style>
 </head>
